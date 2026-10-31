@@ -1,0 +1,440 @@
+/*
+  Intro splash. Hidden unless the <head> gate script sets html[data-splash] (first visit per session, motion allowed).
+
+  Timeline (s)
+    0.00  ledger grid opens from centre, gold halo blooms, counter starts (→ 2.15)
+    0.10  M rises out of a blur
+    0.45  gold swoosh draws left → right; glint flares at the arrow tip (0.84)
+    0.60  MUNIR rises · 0.82 ACCOUNTING AND TAX tracks in · 1.00 gold band unfurls · 1.05 maple leaf drops in
+    1.20  divider + tagline · 1.55 sheen sweeps the finished logo
+    2.35  tagline and edge details out; logo flies into the header logo's position (→ 3.20)
+    2.45  paper curtain lifts (→ 3.25) · 2.57 green curtain lifts (→ 3.37) · 3.35 logo hands off to the header (→ 3.55)
+  Keep SPLASH_FAILSAFE_MS in app/layout.tsx just after the paper curtain ends.
+*/
+
+@property --splash-n {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.splash {
+  --splash-in: cubic-bezier(0.16, 1, 0.3, 1);
+  --splash-out: cubic-bezier(0.7, 0, 0.84, 0);
+  --splash-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+  --splash-ink: var(--color-forest, #073d2e);
+  /* Logo box, shared by the logo layer and the tagline placed under it. */
+  --logo-w: min(30rem, 76vw);
+  --logo-h: calc(var(--logo-w) * 502 / 900);
+  --lift: clamp(2rem, 5vh, 3.25rem);
+  display: none;
+}
+
+html[data-splash] .splash {
+  display: block;
+}
+html[data-splash='active'] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+/* The page's own entrance waits for the curtain, then plays. */
+html[data-splash='active'] :is(.rise, .settle) {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    display: none !important;
+  }
+}
+
+/* ---------- Curtains ---------- */
+
+.splash-panel,
+.splash-trail {
+  position: fixed;
+  inset: 0;
+  will-change: translate;
+}
+.splash-trail {
+  z-index: 99;
+  background: var(--splash-ink);
+  animation: splash-lift 0.8s 2.57s var(--splash-curtain) forwards;
+}
+.splash-panel {
+  z-index: 100;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, #ffffff 0%, var(--color-paper, #f8f9f5) 55%, #eef3ef 100%);
+  cursor: pointer;
+  animation: splash-lift 0.8s 2.45s var(--splash-curtain) forwards;
+}
+
+/* Ledger grid opening outward from the centre, drifting slowly. */
+.splash-grid {
+  position: absolute;
+  inset: -4rem;
+  background-image:
+    linear-gradient(to right, rgb(7 61 46 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(7 61 46 / 0.07) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  -webkit-mask: radial-gradient(ellipse 50% 50% at 50% 50%, #000 15%, transparent 70%) center / 100% 100% no-repeat;
+  mask: radial-gradient(ellipse 50% 50% at 50% 50%, #000 15%, transparent 70%) center / 100% 100% no-repeat;
+  animation:
+    splash-open 1.4s var(--splash-in) both,
+    splash-drift 3.4s linear both;
+}
+
+/* Soft gold halo behind the logo. */
+.splash-halo {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--lift));
+  width: calc(var(--logo-w) * 1.6);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(214 170 84 / 0.16), rgb(214 170 84 / 0.05) 55%, transparent);
+  animation: splash-bloom 1.6s 0.2s var(--splash-in) both;
+}
+
+/* ---------- Logo (its own layer above the curtains so it can fly to the header) ---------- */
+
+.splash-fly {
+  position: fixed;
+  z-index: 101;
+  left: calc(50% - var(--logo-w) / 2);
+  top: calc(50% - var(--logo-h) / 2 - var(--lift));
+  width: var(--logo-w);
+  height: var(--logo-h);
+  pointer-events: none;
+  will-change: translate, scale;
+  animation: splash-out 0.4s 2.35s var(--splash-out) forwards;
+}
+/* Once the header logo has been measured, fly there instead of fading. */
+.splash[data-fly] .splash-fly {
+  animation:
+    splash-fly 0.85s 2.35s var(--splash-curtain) forwards,
+    splash-handoff 0.2s 3.35s linear forwards;
+}
+
+.splash-fly img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.l-mark {
+  animation: splash-rise 0.85s 0.1s var(--splash-in) both;
+}
+.l-swoosh {
+  -webkit-mask: linear-gradient(90deg, #000 45%, transparent 55%) 100% 0 / 300% 100% no-repeat;
+  mask: linear-gradient(90deg, #000 45%, transparent 55%) 100% 0 / 300% 100% no-repeat;
+  animation: splash-wipe 0.8s 0.45s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.l-munir {
+  animation: splash-rise 0.8s 0.6s var(--splash-in) both;
+}
+.l-line {
+  animation: splash-track 0.8s 0.82s var(--splash-in) both;
+}
+.l-band {
+  animation: splash-unfurl 0.7s 1s var(--splash-in) both;
+}
+.l-leaf {
+  transform-origin: 70.7% 9%;
+  animation: splash-leaf 0.75s 1.05s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Light glint at the tip of the growth arrow as the swoosh reaches it. */
+.splash-glint {
+  position: absolute;
+  left: 72.3%;
+  top: 19%;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  /* Bright core with a soft warm halo, crossed by two thin rays that fade at their ends. */
+  background:
+    radial-gradient(circle, #fff 0 5%, rgb(255 240 200 / 0.9) 10%, rgb(255 225 160 / 0.35) 22%, transparent 42%),
+    linear-gradient(90deg, transparent, rgb(255 250 235 / 0.95) 50%, transparent) center / 100% 2px no-repeat,
+    linear-gradient(0deg, transparent, rgb(255 250 235 / 0.95) 50%, transparent) center / 2px 70% no-repeat;
+  scale: 0;
+  animation: splash-glint 0.75s 0.84s cubic-bezier(0.3, 0, 0.2, 1) both;
+}
+
+/* Specular sheen, masked to the finished logo. */
+.splash-sheen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.splash-sheen::before {
+  content: '';
+  position: absolute;
+  inset: -10% auto -10% 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent 0%, rgb(255 255 255 / 0.2) 30%, rgb(255 251 235 / 0.95) 50%, rgb(255 255 255 / 0.2) 70%, transparent 100%);
+  translate: -120% 0;
+  animation: splash-sweep 0.7s 1.55s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+/* ---------- Tagline (under the logo box) ---------- */
+
+.splash-caption {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(50% + var(--logo-h) / 2 - var(--lift));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 1.5rem;
+  text-align: center;
+  animation: splash-out 0.4s 2.35s var(--splash-out) forwards;
+}
+.splash-divider {
+  width: 4rem;
+  height: 1px;
+  margin-block: clamp(1.1rem, 2.6vh, 1.75rem);
+  background: var(--splash-ink);
+  opacity: 0.35;
+  scale: 0 1;
+  animation: splash-draw 0.8s 1.2s var(--splash-in) forwards;
+}
+.splash-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 0.9rem + 1.1vw, 1.75rem);
+  line-height: 1.25;
+  color: var(--splash-ink);
+}
+.splash-word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-right: 0.28em;
+  vertical-align: top;
+}
+.splash-word > span {
+  display: inline-block;
+  animation: splash-word 0.75s calc(1.2s + var(--i) * 60ms) var(--splash-in) both;
+}
+
+/* ---------- Edge details: labels and the counter row ---------- */
+
+.splash-chrome {
+  position: absolute;
+  inset: clamp(1.25rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(7 61 46 / 0.7);
+  pointer-events: none;
+  animation:
+    splash-fade 0.8s 0.3s ease-out both,
+    splash-out 0.4s 2.35s var(--splash-out) forwards;
+}
+.splash-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.splash-row:last-child {
+  margin-top: auto;
+}
+.splash-count {
+  counter-reset: n var(--splash-n);
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.8;
+  font-variant-numeric: tabular-nums;
+  color: var(--splash-ink);
+  animation: splash-count 2.15s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.splash-count::before {
+  content: counter(n, decimal-leading-zero);
+}
+.splash-count small {
+  margin-left: 0.15em;
+  font-size: 0.35em;
+  vertical-align: top;
+}
+.splash-bar {
+  flex: 1;
+  height: 1px;
+  margin-bottom: 0.4rem;
+  background: rgb(7 61 46 / 0.12);
+}
+.splash-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background: var(--splash-ink);
+  transform-origin: left;
+  scale: 0 1;
+  animation: splash-draw 2.15s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@media (width < 48rem) {
+  .splash-hide-sm {
+    display: none;
+  }
+}
+
+/* ---------- Skip (click, key, scroll or touch): fast-forward to the exit ---------- */
+
+.splash.is-skipping :is(.splash-caption, .splash-chrome, .splash-fly) {
+  animation: splash-out 0.3s var(--splash-out) forwards;
+}
+.splash.is-skipping[data-fly] .splash-fly {
+  animation:
+    splash-fly 0.7s var(--splash-curtain) forwards,
+    splash-handoff 0.2s 0.95s linear forwards;
+}
+.splash.is-skipping .splash-panel {
+  animation: splash-lift 0.7s 0.12s var(--splash-curtain) forwards;
+}
+.splash.is-skipping .splash-trail {
+  animation: splash-lift 0.7s 0.24s var(--splash-curtain) forwards;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes splash-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes splash-open {
+  from {
+    opacity: 0;
+    -webkit-mask-size: 15% 15%;
+    mask-size: 15% 15%;
+  }
+}
+@keyframes splash-drift {
+  to {
+    translate: 0 -1.75rem;
+  }
+}
+@keyframes splash-bloom {
+  from {
+    opacity: 0;
+    scale: 0.55;
+  }
+}
+@keyframes splash-rise {
+  from {
+    clip-path: inset(100% 0 0 0);
+    filter: blur(12px);
+    translate: 0 0.75rem;
+  }
+  to {
+    clip-path: inset(0);
+    filter: blur(0);
+    translate: 0 0;
+  }
+}
+@keyframes splash-wipe {
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+@keyframes splash-track {
+  from {
+    opacity: 0;
+    scale: 1.18 1;
+    filter: blur(6px);
+  }
+}
+@keyframes splash-unfurl {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes splash-leaf {
+  from {
+    opacity: 0;
+    translate: 0 -2.5rem;
+    rotate: -40deg;
+    scale: 0.3;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+@keyframes splash-glint {
+  0% {
+    scale: 0;
+    rotate: 0deg;
+    opacity: 0;
+  }
+  35% {
+    scale: 1.15;
+    opacity: 1;
+  }
+  100% {
+    scale: 0;
+    rotate: 90deg;
+    opacity: 0;
+  }
+}
+@keyframes splash-sweep {
+  to {
+    translate: 300% 0;
+  }
+}
+@keyframes splash-draw {
+  to {
+    scale: 1 1;
+  }
+}
+@keyframes splash-word {
+  from {
+    translate: 0 110%;
+  }
+}
+@keyframes splash-count {
+  to {
+    --splash-n: 100;
+  }
+}
+@keyframes splash-out {
+  to {
+    opacity: 0;
+    translate: 0 -1.5rem;
+    filter: blur(6px);
+  }
+}
+@keyframes splash-fly {
+  to {
+    translate: var(--fly-x) var(--fly-y);
+    scale: var(--fly-s);
+  }
+}
+@keyframes splash-handoff {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes splash-lift {
+  to {
+    translate: 0 -100%;
+    border-radius: 0 0 50% 50% / 0 0 12vh 12vh;
+  }
+}

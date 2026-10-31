@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/* Strict brand palette: the default Tailwind colours are removed so nothing off-brand slips in. */
+@theme {
+  --color-*: initial;
+  --color-forest: #073d2e;
+  --color-emerald: #126044;
+  --color-sage: #e6efe8;
+  --color-paper: #f8f9f5;
+  --color-white: #ffffff;
+  --color-ink: #1c2924;
+  --color-muted: #68746d;
+  --color-line: #e4eae5;
+  --color-danger: #a6342a; /* form errors only */
+
+  --shadow-soft: 0 1px 2px rgb(7 61 46 / 0.04), 0 18px 40px -20px rgb(7 61 46 / 0.28);
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@theme inline {
+  --font-serif: var(--font-dm-serif), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6.5rem;
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-sage);
+    color: var(--color-forest);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring, var(--color-emerald));
+    outline-offset: 3px;
+  }
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @variant sm {
+    padding-inline: 2rem;
+  }
+  @variant lg {
+    padding-inline: 3rem;
+  }
+}
+
+/* Dark sections: keep keyboard focus visible against forest green. */
+@utility surface-dark {
+  --focus-ring: var(--color-white);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 1.25rem;
+  }
+}
+@keyframes settle {
+  from {
+    scale: 1.06;
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+}
+@keyframes elevate {
+  to {
+    box-shadow: 0 12px 30px -20px rgb(7 61 46 / 0.4);
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Page-load entrance; stagger with style={{ '--d': n }}. */
+  .rise {
+    animation: rise 0.9s var(--ease-soft) both;
+    animation-delay: calc(var(--d, 0) * 110ms + 60ms);
+  }
+  .settle {
+    animation: settle 1.8s var(--ease-soft) both;
+  }
+
+  /* Scroll reveals are decorative: browsers without scroll-driven animations simply show the content. */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .reveal {
+      animation: reveal auto var(--ease-soft) backwards;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 8%) entry calc(75% + var(--i, 0) * 8%);
+    }
+  }
+  @supports (animation-timeline: scroll()) {
+    .elevate {
+      animation: elevate linear both;
+      animation-timeline: scroll();
+      animation-range: 0 8rem;
+    }
+  }
+}
