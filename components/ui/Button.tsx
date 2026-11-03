@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 const variants = {
-  primary: 'bg-forest text-white hover:bg-emerald',
-  light: 'bg-white text-forest hover:bg-sage',
-  outline: 'border border-forest/25 text-forest hover:border-forest hover:bg-forest hover:text-white',
+  primary: 'bg-gold text-navy hover:bg-navy hover:text-white',
+  light: 'bg-white text-navy hover:bg-mist',
+  outline: 'border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-white',
 }
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 export function ButtonLink({ href, children, variant = 'primary', className = '' }: Props) {
   const look =
     variant === 'text'
-      ? 'gap-2 text-forest underline decoration-forest/30 decoration-1 underline-offset-[7px] hover:decoration-forest'
+      ? 'gap-2 text-navy underline decoration-navy/30 decoration-1 underline-offset-[7px] hover:decoration-navy'
       : `min-h-12 justify-center gap-2.5 rounded-sm px-6 ${variants[variant]}`
   const classes = `group inline-flex items-center text-[0.9375rem] font-semibold tracking-[0.01em] transition-colors duration-300 ${look} ${className}`
   const content = (

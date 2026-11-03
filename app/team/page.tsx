@@ -50,10 +50,10 @@ export default function TeamPage() {
           <ul className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
             {commitments.map(({ title, text }, i) => (
               <li key={title} style={{ '--i': i }} className="reveal bg-white p-8 sm:p-10">
-                <span aria-hidden className="font-serif text-4xl text-emerald/40">
+                <span aria-hidden className="font-serif text-4xl text-blue/40">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-6 font-serif text-[1.75rem] text-forest">{title}</h3>
+                <h3 className="mt-6 font-serif text-[1.75rem] text-navy">{title}</h3>
                 <p className="mt-3 leading-relaxed text-muted">{text}</p>
               </li>
             ))}

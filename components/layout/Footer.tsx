@@ -4,7 +4,7 @@ import { Logo } from './Logo'
 
 export function Footer() {
   return (
-    <footer className="surface-dark relative overflow-hidden bg-forest text-white">
+    <footer className="surface-dark relative overflow-hidden bg-navy text-white">
       <div className="shell grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
         <div className="sm:col-span-2 lg:col-span-5">
           <Logo light className="h-24 sm:h-28" />

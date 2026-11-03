@@ -3,17 +3,18 @@
 /* Strict brand palette: the default Tailwind colours are removed so nothing off-brand slips in. */
 @theme {
   --color-*: initial;
-  --color-forest: #073d2e;
-  --color-emerald: #126044;
-  --color-sage: #e6efe8;
-  --color-paper: #f8f9f5;
+  --color-navy: #0f2a4f;
+  --color-blue: #1d4a85;
+  --color-gold: #d4a32b; /* logo band; fills and rules, too light for small text on white */
+  --color-mist: #e9eef5;
+  --color-paper: #f8f9fb;
   --color-white: #ffffff;
-  --color-ink: #1c2924;
-  --color-muted: #68746d;
-  --color-line: #e4eae5;
+  --color-ink: #14213a;
+  --color-muted: #5f6b7d;
+  --color-line: #e2e7ef;
   --color-danger: #a6342a; /* form errors only */
 
-  --shadow-soft: 0 1px 2px rgb(7 61 46 / 0.04), 0 18px 40px -20px rgb(7 61 46 / 0.28);
+  --shadow-soft: 0 1px 2px rgb(15 42 79 / 0.04), 0 18px 40px -20px rgb(15 42 79 / 0.28);
   --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -44,11 +45,11 @@
     text-wrap: pretty;
   }
   ::selection {
-    background: var(--color-sage);
-    color: var(--color-forest);
+    background: var(--color-mist);
+    color: var(--color-navy);
   }
   :focus-visible {
-    outline: 2px solid var(--focus-ring, var(--color-emerald));
+    outline: 2px solid var(--focus-ring, var(--color-blue));
     outline-offset: 3px;
   }
 }
@@ -66,7 +67,7 @@
   }
 }
 
-/* Dark sections: keep keyboard focus visible against forest green. */
+/* Dark sections: keep keyboard focus visible against navy. */
 @utility surface-dark {
   --focus-ring: var(--color-white);
 }
@@ -90,7 +91,7 @@
 }
 @keyframes elevate {
   to {
-    box-shadow: 0 12px 30px -20px rgb(7 61 46 / 0.4);
+    box-shadow: 0 12px 30px -20px rgb(15 42 79 / 0.4);
     border-color: transparent;
   }
 }

@@ -8,7 +8,7 @@ import { site } from '@/lib/site'
 type Status = 'idle' | 'sending' | 'sent' | 'unavailable' | 'failed'
 
 const control =
-  'w-full min-h-12 rounded-sm border border-muted/80 bg-white px-4 text-base text-ink transition-colors placeholder:text-muted/80 hover:border-forest/60 focus:border-forest focus:ring-3 focus:ring-forest/10 focus:outline-none aria-[invalid=true]:border-danger'
+  'w-full min-h-12 rounded-sm border border-muted/80 bg-white px-4 text-base text-ink transition-colors placeholder:text-muted/80 hover:border-navy/60 focus:border-navy focus:ring-3 focus:ring-navy/10 focus:outline-none aria-[invalid=true]:border-danger'
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
@@ -71,15 +71,15 @@ export function ContactForm() {
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-start py-6">
-        <span className="grid size-14 place-items-center rounded-full bg-sage text-forest">
+        <span className="grid size-14 place-items-center rounded-full bg-mist text-navy">
           <CircleCheck aria-hidden className="size-7" strokeWidth={1.5} />
         </span>
-        <h2 ref={(el) => el?.focus()} tabIndex={-1} className="mt-6 font-serif text-3xl text-forest focus:outline-none">
+        <h2 ref={(el) => el?.focus()} tabIndex={-1} className="mt-6 font-serif text-3xl text-navy focus:outline-none">
           Thank you — your enquiry has been sent.
         </h2>
         <p className="mt-4 max-w-lg leading-relaxed text-muted">
           We will be in touch using the details you provided. If your matter is time-sensitive, please call the office at{' '}
-          <a href={site.office.href} className="font-semibold text-forest underline underline-offset-4">
+          <a href={site.office.href} className="font-semibold text-navy underline underline-offset-4">
             {site.office.display}
           </a>
           .
@@ -90,7 +90,7 @@ export function ContactForm() {
             startedAt.current = Date.now()
             setStatus('idle')
           }}
-          className="mt-8 font-semibold text-forest underline decoration-forest/30 underline-offset-[7px] hover:decoration-forest"
+          className="mt-8 font-semibold text-navy underline decoration-navy/30 underline-offset-[7px] hover:decoration-navy"
         >
           Send another enquiry
         </button>
@@ -111,7 +111,7 @@ export function ContactForm() {
   })
   const label = 'mb-2 block text-sm font-semibold text-ink'
   const req = (
-    <span aria-hidden className="text-emerald">
+    <span aria-hidden className="text-blue">
       {' '}
       *
     </span>
@@ -127,7 +127,7 @@ export function ContactForm() {
       className="relative grid gap-6 sm:grid-cols-2"
     >
       <p className="text-sm text-muted sm:col-span-2">
-        Fields marked <span className="text-emerald">*</span> are required.
+        Fields marked <span className="text-blue">*</span> are required.
       </p>
 
       <div>
@@ -171,9 +171,9 @@ export function ContactForm() {
           {CLIENT_TYPES.map((type) => (
             <label
               key={type}
-              className="flex min-h-12 flex-1 cursor-pointer items-center gap-3 rounded-sm border border-muted/80 px-4 text-ink transition-colors hover:border-forest/60 has-checked:border-forest has-checked:bg-sage/60"
+              className="flex min-h-12 flex-1 cursor-pointer items-center gap-3 rounded-sm border border-muted/80 px-4 text-ink transition-colors hover:border-navy/60 has-checked:border-navy has-checked:bg-mist/60"
             >
-              <input type="radio" name="clientType" value={type} className="size-4 accent-forest" />
+              <input type="radio" name="clientType" value={type} className="size-4 accent-navy" />
               {type}
             </label>
           ))}
@@ -231,15 +231,15 @@ export function ContactForm() {
               ? 'Our online form is not available at the moment, so your enquiry has not been sent. Please contact'
               : 'Sorry, we could not send your enquiry. Please try again, or contact'}{' '}
             the office directly at{' '}
-            <a href={site.office.href} className="font-semibold text-forest underline underline-offset-2">
+            <a href={site.office.href} className="font-semibold text-navy underline underline-offset-2">
               {site.office.display}
             </a>
             , cell{' '}
-            <a href={site.cell.href} className="font-semibold text-forest underline underline-offset-2">
+            <a href={site.cell.href} className="font-semibold text-navy underline underline-offset-2">
               {site.cell.display}
             </a>{' '}
             or{' '}
-            <a href={`mailto:${site.email}`} className="font-semibold text-forest underline underline-offset-2">
+            <a href={`mailto:${site.email}`} className="font-semibold text-navy underline underline-offset-2">
               {site.email}
             </a>
             .
@@ -251,7 +251,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="group inline-flex min-h-13 w-full items-center justify-center gap-2.5 rounded-sm bg-forest px-8 font-semibold text-white transition-colors hover:bg-emerald disabled:cursor-wait disabled:opacity-80 sm:w-auto"
+          className="group inline-flex min-h-13 w-full items-center justify-center gap-2.5 rounded-sm bg-navy px-8 font-semibold text-white transition-colors hover:bg-blue disabled:cursor-wait disabled:opacity-80 sm:w-auto"
         >
           {status === 'sending' ? (
             <>

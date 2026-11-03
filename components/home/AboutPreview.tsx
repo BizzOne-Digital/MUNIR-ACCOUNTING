@@ -17,11 +17,11 @@ export function AboutPreview() {
             className="size-full object-cover transition-[scale] duration-700 ease-(--ease-soft) group-hover:scale-[1.03]"
           />
         </div>
-        <span aria-hidden className="absolute -right-4 -bottom-4 -z-10 size-2/3 bg-sage" />
+        <span aria-hidden className="absolute -right-4 -bottom-4 -z-10 size-2/3 bg-mist" />
       </div>
       <div className="reveal" style={{ '--i': 1 }}>
         <Eyebrow>About Us</Eyebrow>
-        <h2 className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-forest">
+        <h2 className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-navy">
           Accounting Built Around Your Needs
         </h2>
         <p className="mt-5 leading-relaxed text-muted">{site.mission}</p>

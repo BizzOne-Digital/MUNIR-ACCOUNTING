@@ -28,7 +28,7 @@ export function Navigation() {
               <Link
                 href={href}
                 aria-current={isActive(href) ? 'page' : undefined}
-                className="relative py-2 text-[0.9375rem] font-medium whitespace-nowrap text-ink/75 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-forest after:transition-transform after:duration-300 hover:text-forest hover:after:scale-x-100 aria-[current=page]:text-forest aria-[current=page]:after:scale-x-100"
+                className="relative py-2 text-[0.9375rem] font-medium whitespace-nowrap text-ink/75 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-navy after:transition-transform after:duration-300 hover:text-navy hover:after:scale-x-100 aria-[current=page]:text-navy aria-[current=page]:after:scale-x-100"
               >
                 {label}
               </Link>
@@ -41,7 +41,7 @@ export function Navigation() {
       </nav>
 
       <div className="-mr-2.5 flex shrink-0 items-center lg:hidden">
-        <a href={site.office.href} aria-label={`Call the office at ${site.office.display}`} className="hidden size-11 place-items-center text-forest min-[375px]:grid">
+        <a href={site.office.href} aria-label={`Call the office at ${site.office.display}`} className="hidden size-11 place-items-center text-navy min-[375px]:grid">
           <Phone aria-hidden className="size-5" strokeWidth={1.75} />
         </a>
         <button
@@ -50,7 +50,7 @@ export function Navigation() {
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen(!open)}
-          className="grid size-11 place-items-center text-forest"
+          className="grid size-11 place-items-center text-navy"
         >
           {open ? <X aria-hidden className="size-6" strokeWidth={1.5} /> : <Menu aria-hidden className="size-6" strokeWidth={1.5} />}
         </button>
@@ -69,10 +69,10 @@ export function Navigation() {
                 <Link
                   href={href}
                   aria-current={isActive(href) ? 'page' : undefined}
-                  className="flex items-center justify-between py-4 font-serif text-[1.375rem] text-ink transition-colors hover:text-forest aria-[current=page]:text-forest"
+                  className="flex items-center justify-between py-4 font-serif text-[1.375rem] text-ink transition-colors hover:text-navy aria-[current=page]:text-navy"
                 >
                   {label}
-                  {isActive(href) && <span aria-hidden className="size-1.5 rounded-full bg-emerald" />}
+                  {isActive(href) && <span aria-hidden className="size-1.5 rounded-full bg-blue" />}
                 </Link>
               </li>
             ))}
@@ -85,8 +85,8 @@ export function Navigation() {
           <ul className="mt-5 grid gap-3 border-t border-line pt-5 pb-3 text-[0.9375rem] text-ink/80">
             {contacts.map(({ label, display, href, icon: Icon }) => (
               <li key={href}>
-                <a href={href} className="inline-flex min-h-11 items-center gap-3 hover:text-forest">
-                  <Icon aria-hidden className="size-4 text-emerald" strokeWidth={1.75} />
+                <a href={href} className="inline-flex min-h-11 items-center gap-3 hover:text-navy">
+                  <Icon aria-hidden className="size-4 text-blue" strokeWidth={1.75} />
                   <span className="text-muted">{label}</span> {display}
                 </a>
               </li>

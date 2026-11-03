@@ -10,7 +10,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
 
   return (
     <article className="group">
-      <div className="relative aspect-[4/5] overflow-hidden bg-sage">
+      <div className="relative aspect-[4/5] overflow-hidden bg-mist">
         {member.photo ? (
           <Image
             src={member.photo}
@@ -20,13 +20,13 @@ export function TeamCard({ member }: { member: TeamMember }) {
             className="size-full object-cover transition-[scale] duration-700 ease-(--ease-soft) group-hover:scale-[1.03]"
           />
         ) : (
-          <span aria-hidden className="grid size-full place-items-center font-serif text-7xl text-forest/25">
+          <span aria-hidden className="grid size-full place-items-center font-serif text-7xl text-navy/25">
             {initials}
           </span>
         )}
       </div>
-      <h3 className="mt-5 font-serif text-2xl text-forest">{member.name}</h3>
-      <p className="mt-1 text-xs font-bold tracking-[0.18em] text-emerald uppercase">{member.role}</p>
+      <h3 className="mt-5 font-serif text-2xl text-navy">{member.name}</h3>
+      <p className="mt-1 text-xs font-bold tracking-[0.18em] text-blue uppercase">{member.role}</p>
       {member.bio && <p className="mt-3 leading-relaxed text-muted">{member.bio}</p>}
     </article>
   )

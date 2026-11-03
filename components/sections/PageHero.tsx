@@ -13,10 +13,10 @@ type Props = {
   imagePosition?: string
 }
 
-// With an image: full-bleed photo under a forest-green scrim, white text. Without: light paper banner.
+// With an image: full-bleed photo under a navy scrim, white text. Without: light paper banner.
 export function PageHero({ eyebrow, title, intro, crumb, image, imageAlt = '', imagePosition = 'center' }: Props) {
   return (
-    <section className={`relative isolate overflow-hidden ${image ? 'surface-dark bg-forest text-white' : 'border-b border-line bg-paper'}`}>
+    <section className={`relative isolate overflow-hidden ${image ? 'surface-dark bg-navy text-white' : 'border-b border-line bg-paper'}`}>
       {image ? (
         <>
           <Image
@@ -33,13 +33,13 @@ export function PageHero({ eyebrow, title, intro, crumb, image, imageAlt = '', i
           {/* Solid enough under the text on phones; opens up toward the photo on wide screens. */}
           <span
             aria-hidden
-            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(7_61_46/0.72),rgb(7_61_46/0.9))] lg:bg-[linear-gradient(90deg,rgb(7_61_46/0.94)_0%,rgb(7_61_46/0.82)_38%,rgb(7_61_46/0.35)_75%,rgb(7_61_46/0.2)_100%)]"
+            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(15_42_79/0.72),rgb(15_42_79/0.9))] lg:bg-[linear-gradient(90deg,rgb(15_42_79/0.94)_0%,rgb(15_42_79/0.82)_38%,rgb(15_42_79/0.35)_75%,rgb(15_42_79/0.2)_100%)]"
           />
         </>
       ) : (
         <span
           aria-hidden
-          className="pointer-events-none absolute right-[4%] -bottom-[0.3em] hidden font-serif text-[22rem] leading-none tracking-[-0.09em] text-forest/[0.045] select-none lg:block"
+          className="pointer-events-none absolute right-[4%] -bottom-[0.3em] hidden font-serif text-[22rem] leading-none tracking-[-0.09em] text-navy/[0.045] select-none lg:block"
         >
           {site.monogram}
         </span>
@@ -50,12 +50,12 @@ export function PageHero({ eyebrow, title, intro, crumb, image, imageAlt = '', i
           <nav aria-label="Breadcrumb" className="rise">
             <ol className={`flex items-center gap-2 text-sm ${image ? 'text-white/70' : 'text-muted'}`}>
               <li>
-                <Link href="/" className={`transition-colors ${image ? 'hover:text-white' : 'hover:text-forest'}`}>
+                <Link href="/" className={`transition-colors ${image ? 'hover:text-white' : 'hover:text-navy'}`}>
                   Home
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li aria-current="page" className={image ? 'text-white' : 'text-forest'}>
+              <li aria-current="page" className={image ? 'text-white' : 'text-navy'}>
                 {crumb}
               </li>
             </ol>
@@ -64,7 +64,7 @@ export function PageHero({ eyebrow, title, intro, crumb, image, imageAlt = '', i
             {eyebrow}
           </Eyebrow>
           <h1
-            className={`rise mt-5 font-serif text-[clamp(2.5rem,1.6rem+3vw,4.5rem)] leading-[1.03] ${image ? 'text-white' : 'text-forest'}`}
+            className={`rise mt-5 font-serif text-[clamp(2.5rem,1.6rem+3vw,4.5rem)] leading-[1.03] ${image ? 'text-white' : 'text-navy'}`}
             style={{ '--d': 1 }}
           >
             {title}

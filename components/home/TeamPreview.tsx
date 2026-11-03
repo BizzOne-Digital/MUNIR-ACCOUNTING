@@ -7,7 +7,7 @@ export function TeamPreview() {
   return (
     <div className="reveal" style={{ '--i': 2 }}>
       <Eyebrow>Our Team</Eyebrow>
-      <h2 className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-forest">People You Can Work With</h2>
+      <h2 className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-navy">People You Can Work With</h2>
       <p className="mt-5 leading-relaxed text-muted">
         Professional accounting services built around reliable support and personalized guidance.
       </p>
@@ -23,7 +23,7 @@ export function TeamPreview() {
         <ul className="mt-8 border-b border-line">
           {commitments.map(({ title, text }, i) => (
             <li key={title} className="flex gap-5 border-t border-line py-5">
-              <span aria-hidden className="font-serif text-lg leading-7 text-emerald">
+              <span aria-hidden className="font-serif text-lg leading-7 text-blue">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>

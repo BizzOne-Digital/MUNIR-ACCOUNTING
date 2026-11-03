@@ -7,12 +7,12 @@ export function Header() {
     <>
       <a
         href="#main"
-        className="sr-only z-[60] bg-forest px-4 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        className="sr-only z-[60] bg-navy px-4 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
       >
         Skip to content
       </a>
 
-      <div className="surface-dark bg-forest text-white/85">
+      <div className="surface-dark bg-navy text-white/85">
         <ul className="shell flex h-10 items-center justify-center gap-5 text-[0.8125rem] sm:gap-0 sm:divide-x sm:divide-white/20">
           {contacts.map(({ label, display, href, icon: Icon }, i) => (
             <li key={href} className={`sm:px-6 ${i === 2 ? 'hidden md:block' : ''}`}>

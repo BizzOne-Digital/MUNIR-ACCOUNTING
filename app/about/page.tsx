@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="reveal lg:col-span-5">
             <Eyebrow>Introduction</Eyebrow>
-            <p className="mt-6 font-serif text-[clamp(1.85rem,1.4rem+1.4vw,2.6rem)] leading-[1.2] text-forest">
+            <p className="mt-6 font-serif text-[clamp(1.85rem,1.4rem+1.4vw,2.6rem)] leading-[1.2] text-navy">
               Your financial matters deserve accuracy, professionalism and personal attention.
             </p>
           </div>
@@ -70,13 +70,13 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section aria-labelledby="mission-title" className="relative overflow-hidden border-y border-forest/10 bg-sage py-20 sm:py-24 lg:py-28">
+      <section aria-labelledby="mission-title" className="relative overflow-hidden border-y border-navy/10 bg-mist py-20 sm:py-24 lg:py-28">
         <div className="shell reveal mx-auto max-w-5xl text-center">
-          <Quote aria-hidden className="mx-auto size-10 text-emerald/40" strokeWidth={1} />
+          <Quote aria-hidden className="mx-auto size-10 text-blue/40" strokeWidth={1} />
           <Eyebrow as="h2" id="mission-title" centered className="mt-6">
             Our Mission
           </Eyebrow>
-          <blockquote className="mt-8 font-serif text-[clamp(1.5rem,1.1rem+1.3vw,2.35rem)] leading-[1.35] text-forest">
+          <blockquote className="mt-8 font-serif text-[clamp(1.5rem,1.1rem+1.3vw,2.35rem)] leading-[1.35] text-navy">
             <p>{site.mission}</p>
           </blockquote>
         </div>
@@ -104,10 +104,10 @@ export default function AboutPage() {
           <ol className="grid gap-px self-start border border-line bg-line sm:grid-cols-2 lg:col-span-7">
             {principles.map(({ title, text }, i) => (
               <li key={title} style={{ '--i': i % 2 }} className="reveal bg-white p-8 sm:p-10">
-                <span aria-hidden className="font-serif text-4xl text-emerald/40">
+                <span aria-hidden className="font-serif text-4xl text-blue/40">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-6 font-serif text-[1.75rem] text-forest">{title}</h3>
+                <h3 className="mt-6 font-serif text-[1.75rem] text-navy">{title}</h3>
                 <p className="mt-3 leading-relaxed text-muted">{text}</p>
               </li>
             ))}
@@ -128,7 +128,7 @@ export default function AboutPage() {
                 className="size-full object-cover transition-[scale] duration-700 ease-(--ease-soft) group-hover:scale-[1.03]"
               />
             </div>
-            <span aria-hidden className="absolute -right-4 -bottom-4 -z-10 size-2/3 bg-sage" />
+            <span aria-hidden className="absolute -right-4 -bottom-4 -z-10 size-2/3 bg-mist" />
           </div>
           <div className="lg:col-span-6">
             <SectionHeading
@@ -139,7 +139,7 @@ export default function AboutPage() {
             <ul className="reveal mt-8 grid gap-4" style={{ '--i': 1 }}>
               {personalService.map((item) => (
                 <li key={item} className="flex gap-3.5 leading-relaxed text-ink/85">
-                  <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-sage text-forest">
+                  <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-mist text-navy">
                     <Check aria-hidden className="size-3.5" strokeWidth={2.25} />
                   </span>
                   {item}

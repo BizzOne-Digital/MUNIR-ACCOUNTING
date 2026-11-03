@@ -79,10 +79,10 @@ export default function ServicesPage() {
             <ol className="border-t border-line">
               {services.map(({ id, title }, i) => (
                 <li key={id} className="border-b border-line">
-                  <Link href={`#${id}`} className="group flex items-center gap-5 py-4 transition-colors hover:text-forest">
-                    <span className="w-7 font-serif text-lg text-emerald/60">{String(i + 1).padStart(2, '0')}</span>
+                  <Link href={`#${id}`} className="group flex items-center gap-5 py-4 transition-colors hover:text-navy">
+                    <span className="w-7 font-serif text-lg text-blue/60">{String(i + 1).padStart(2, '0')}</span>
                     <span className="flex-1 font-semibold">{title}</span>
-                    <ArrowRight aria-hidden className="size-4 text-forest/40 transition-[translate,color] duration-300 group-hover:translate-x-1 group-hover:text-forest" />
+                    <ArrowRight aria-hidden className="size-4 text-navy/40 transition-[translate,color] duration-300 group-hover:translate-x-1 group-hover:text-navy" />
                   </Link>
                 </li>
               ))}
@@ -92,30 +92,30 @@ export default function ServicesPage() {
       </section>
 
       {/* Individuals & businesses */}
-      <section aria-label="Services by client type" className="border-y border-forest/10 bg-sage">
-        <div className="shell grid md:grid-cols-2 md:divide-x md:divide-forest/15">
+      <section aria-label="Services by client type" className="border-y border-navy/10 bg-mist">
+        <div className="shell grid md:grid-cols-2 md:divide-x md:divide-navy/15">
           {audiences.map(({ id, icon: Icon, eyebrow, title, text }, i) => (
             <div
               key={id}
               id={id}
               style={{ '--i': i }}
-              className={`reveal py-14 sm:py-16 lg:py-20 ${i ? 'border-t border-forest/15 md:border-t-0 md:pl-12 lg:pl-16' : 'md:pr-12 lg:pr-16'}`}
+              className={`reveal py-14 sm:py-16 lg:py-20 ${i ? 'border-t border-navy/15 md:border-t-0 md:pl-12 lg:pl-16' : 'md:pr-12 lg:pr-16'}`}
             >
-              <span className="grid size-14 place-items-center rounded-full border border-forest/20 bg-white/50 text-forest">
+              <span className="grid size-14 place-items-center rounded-full border border-navy/20 bg-white/50 text-navy">
                 <Icon aria-hidden className="size-6" strokeWidth={1.25} />
               </span>
               <Eyebrow className="mt-8">{eyebrow}</Eyebrow>
-              <h2 className="mt-4 font-serif text-[clamp(1.85rem,1.5rem+1vw,2.5rem)] leading-tight text-forest">{title}</h2>
+              <h2 className="mt-4 font-serif text-[clamp(1.85rem,1.5rem+1vw,2.5rem)] leading-tight text-navy">{title}</h2>
               <p className="mt-4 max-w-md leading-relaxed text-ink/75">{text}</p>
-              <h3 className="mt-8 text-xs font-bold tracking-[0.18em] text-forest/70 uppercase">Relevant services</h3>
-              <ul className="mt-3 border-t border-forest/15">
+              <h3 className="mt-8 text-xs font-bold tracking-[0.18em] text-navy/70 uppercase">Relevant services</h3>
+              <ul className="mt-3 border-t border-navy/15">
                 {services
                   .filter((s) => s.for.includes(id))
                   .map((s) => (
-                    <li key={s.id} className="border-b border-forest/15">
-                      <Link href={`#${s.id}`} className="group flex items-center justify-between gap-4 py-3.5 text-ink/85 transition-colors hover:text-forest">
+                    <li key={s.id} className="border-b border-navy/15">
+                      <Link href={`#${s.id}`} className="group flex items-center justify-between gap-4 py-3.5 text-ink/85 transition-colors hover:text-navy">
                         {s.title}
-                        <ArrowRight aria-hidden className="size-4 shrink-0 text-forest/50 transition-transform duration-300 group-hover:translate-x-1" />
+                        <ArrowRight aria-hidden className="size-4 shrink-0 text-navy/50 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </li>
                   ))}
@@ -135,7 +135,7 @@ export default function ServicesPage() {
             <div className="lg:col-span-4">
               <div className="reveal lg:sticky lg:top-32">
                 <Eyebrow>{group.eyebrow}</Eyebrow>
-                <h2 id={`${group.id}-title`} className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-forest">
+                <h2 id={`${group.id}-title`} className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-navy">
                   {group.title}
                 </h2>
                 <p className="mt-5 leading-relaxed text-muted">{group.intro}</p>
@@ -147,20 +147,20 @@ export default function ServicesPage() {
                 .map(({ id, title, description, audience, icon: Icon }) => (
                   <article key={id} id={id} className="reveal border-t border-line py-10 first:border-t-0 first:pt-0 last:pb-0 sm:py-12">
                     <div className="flex items-center gap-5">
-                      <span className="grid size-14 shrink-0 place-items-center border border-line bg-white text-emerald">
+                      <span className="grid size-14 shrink-0 place-items-center border border-line bg-white text-blue">
                         <Icon aria-hidden className="size-6" strokeWidth={1.4} />
                       </span>
-                      <h3 className="font-serif text-[clamp(1.6rem,1.35rem+0.8vw,2.1rem)] leading-tight text-forest">{title}</h3>
+                      <h3 className="font-serif text-[clamp(1.6rem,1.35rem+0.8vw,2.1rem)] leading-tight text-navy">{title}</h3>
                     </div>
                     <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-ink/80">{description}</p>
                     <dl className="mt-8 grid gap-6 border-y border-line py-6 sm:grid-cols-[1fr_auto] sm:gap-10">
                       <div>
-                        <dt className="text-xs font-bold tracking-[0.18em] text-emerald uppercase">Who it’s for</dt>
+                        <dt className="text-xs font-bold tracking-[0.18em] text-blue uppercase">Who it’s for</dt>
                         <dd className="mt-2 leading-relaxed text-muted">{audience}</dd>
                       </div>
                       <div>
-                        <dt className="text-xs font-bold tracking-[0.18em] text-emerald uppercase">Pricing</dt>
-                        <dd className="mt-2 font-semibold whitespace-nowrap text-forest">Contact for Pricing</dd>
+                        <dt className="text-xs font-bold tracking-[0.18em] text-blue uppercase">Pricing</dt>
+                        <dd className="mt-2 font-semibold whitespace-nowrap text-navy">Contact for Pricing</dd>
                       </div>
                     </dl>
                     <ButtonLink href="/contact" variant="text" className="mt-6">
@@ -174,11 +174,11 @@ export default function ServicesPage() {
       ))}
 
       {/* Pricing */}
-      <section id="pricing" aria-labelledby="pricing-title" className="border-y border-forest/10 bg-sage py-20 sm:py-24 lg:py-28">
+      <section id="pricing" aria-labelledby="pricing-title" className="border-y border-navy/10 bg-mist py-20 sm:py-24 lg:py-28">
         <div className="shell">
           <div className="reveal mx-auto max-w-3xl text-center">
             <Eyebrow centered>Pricing</Eyebrow>
-            <h2 id="pricing-title" className="mt-5 font-serif text-[clamp(2.1rem,1.5rem+1.9vw,3.25rem)] leading-[1.08] text-forest">
+            <h2 id="pricing-title" className="mt-5 font-serif text-[clamp(2.1rem,1.5rem+1.9vw,3.25rem)] leading-[1.08] text-navy">
               Pricing Tailored to Your Needs
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-ink/75">
@@ -187,18 +187,18 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <ul className="mt-14 grid gap-px border border-forest/10 bg-forest/10 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-14 grid gap-px border border-navy/10 bg-navy/10 sm:grid-cols-2 lg:grid-cols-3">
             {pricing.map(({ title, text, icon: Icon }, i) => (
               <li key={title} style={{ '--i': i % 3 }} className="reveal group flex flex-col bg-white p-7 sm:p-9">
-                <span className="grid size-12 place-items-center border border-line text-emerald transition-colors duration-300 group-hover:border-forest group-hover:bg-forest group-hover:text-white">
+                <span className="grid size-12 place-items-center border border-line text-blue transition-colors duration-300 group-hover:border-navy group-hover:bg-navy group-hover:text-white">
                   <Icon aria-hidden className="size-[1.375rem]" strokeWidth={1.4} />
                 </span>
-                <h3 className="mt-7 font-serif text-[1.75rem] leading-tight text-forest">{title}</h3>
+                <h3 className="mt-7 font-serif text-[1.75rem] leading-tight text-navy">{title}</h3>
                 <p className="mt-2 flex-1 leading-relaxed text-muted">{text}</p>
                 <div className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t border-line pt-6">
                   <div>
-                    <p className="text-xs font-bold tracking-[0.18em] text-emerald uppercase">Price</p>
-                    <p className="mt-1 font-serif text-xl text-forest">Contact for Pricing</p>
+                    <p className="text-xs font-bold tracking-[0.18em] text-blue uppercase">Price</p>
+                    <p className="mt-1 font-serif text-xl text-navy">Contact for Pricing</p>
                   </div>
                   <ButtonLink href="/contact" variant="text">
                     Request Pricing
@@ -206,7 +206,7 @@ export default function ServicesPage() {
                 </div>
               </li>
             ))}
-            <li style={{ '--i': 2 }} className="surface-dark reveal flex flex-col justify-between gap-8 bg-forest p-7 text-white sm:p-9">
+            <li style={{ '--i': 2 }} className="surface-dark reveal flex flex-col justify-between gap-8 bg-navy p-7 text-white sm:p-9">
               <div>
                 <p className="font-serif text-[1.75rem] leading-tight">Need more than one service?</p>
                 <p className="mt-3 leading-relaxed text-white/75">Tell us what you need and we will provide pricing for your situation.</p>
@@ -230,12 +230,12 @@ export default function ServicesPage() {
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="reveal lg:col-span-4">
             <Eyebrow>Questions</Eyebrow>
-            <h2 id="faq-title" className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-forest">
+            <h2 id="faq-title" className="mt-5 font-serif text-[clamp(2rem,1.5rem+1.5vw,2.75rem)] leading-[1.1] text-navy">
               Frequently Asked Questions
             </h2>
             <p className="mt-5 leading-relaxed text-muted">
               Have a question that is not answered here?{' '}
-              <Link href="/contact" className="font-semibold text-forest underline underline-offset-4">
+              <Link href="/contact" className="font-semibold text-navy underline underline-offset-4">
                 Contact the office
               </Link>
               .
@@ -244,9 +244,9 @@ export default function ServicesPage() {
           <div className="reveal border-t border-line lg:col-span-8" style={{ '--i': 1 }}>
             {faqs.map(({ q, a }) => (
               <details key={q} name="faq" className="group border-b border-line">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-[1.0625rem] font-semibold text-ink transition-colors hover:text-forest [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-[1.0625rem] font-semibold text-ink transition-colors hover:text-navy [&::-webkit-details-marker]:hidden">
                   {q}
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line text-forest transition-[rotate,background-color] duration-300 group-open:rotate-45 group-open:bg-sage">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line text-navy transition-[rotate,background-color] duration-300 group-open:rotate-45 group-open:bg-mist">
                     <Plus aria-hidden className="size-4" />
                   </span>
                 </summary>

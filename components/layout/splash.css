@@ -8,7 +8,7 @@
     0.60  MUNIR rises · 0.82 ACCOUNTING AND TAX tracks in · 1.00 gold band unfurls · 1.05 maple leaf drops in
     1.20  divider + tagline · 1.55 sheen sweeps the finished logo
     2.35  tagline and edge details out; logo flies into the header logo's position (→ 3.20)
-    2.45  paper curtain lifts (→ 3.25) · 2.57 green curtain lifts (→ 3.37) · 3.35 logo hands off to the header (→ 3.55)
+    2.45  paper curtain lifts (→ 3.25) · 2.57 navy curtain lifts (→ 3.37) · 3.35 logo hands off to the header (→ 3.55)
   Keep SPLASH_FAILSAFE_MS in app/layout.tsx just after the paper curtain ends.
 */
 
@@ -22,7 +22,7 @@
   --splash-in: cubic-bezier(0.16, 1, 0.3, 1);
   --splash-out: cubic-bezier(0.7, 0, 0.84, 0);
   --splash-curtain: cubic-bezier(0.76, 0, 0.24, 1);
-  --splash-ink: var(--color-forest, #073d2e);
+  --splash-ink: var(--color-navy, #0f2a4f);
   /* Logo box, shared by the logo layer and the tagline placed under it. */
   --logo-w: min(30rem, 76vw);
   --logo-h: calc(var(--logo-w) * 502 / 900);
@@ -64,7 +64,7 @@ html[data-splash='active'] :is(.rise, .settle) {
 .splash-panel {
   z-index: 100;
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 70% at 50% 45%, #ffffff 0%, var(--color-paper, #f8f9f5) 55%, #eef3ef 100%);
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, #ffffff 0%, var(--color-paper, #f8f9fb) 55%, #edf1f7 100%);
   cursor: pointer;
   animation: splash-lift 0.8s 2.45s var(--splash-curtain) forwards;
 }
@@ -74,8 +74,8 @@ html[data-splash='active'] :is(.rise, .settle) {
   position: absolute;
   inset: -4rem;
   background-image:
-    linear-gradient(to right, rgb(7 61 46 / 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(7 61 46 / 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgb(15 42 79 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 42 79 / 0.07) 1px, transparent 1px);
   background-size: 3.5rem 3.5rem;
   -webkit-mask: radial-gradient(ellipse 50% 50% at 50% 50%, #000 15%, transparent 70%) center / 100% 100% no-repeat;
   mask: radial-gradient(ellipse 50% 50% at 50% 50%, #000 15%, transparent 70%) center / 100% 100% no-repeat;
@@ -236,7 +236,7 @@ html[data-splash='active'] :is(.rise, .settle) {
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgb(7 61 46 / 0.7);
+  color: rgb(15 42 79 / 0.7);
   pointer-events: none;
   animation:
     splash-fade 0.8s 0.3s ease-out both,
@@ -274,7 +274,7 @@ html[data-splash='active'] :is(.rise, .settle) {
   flex: 1;
   height: 1px;
   margin-bottom: 0.4rem;
-  background: rgb(7 61 46 / 0.12);
+  background: rgb(15 42 79 / 0.12);
 }
 .splash-bar::after {
   content: '';

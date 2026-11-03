@@ -7,7 +7,7 @@ export function ContactCTA() {
   return (
     <section aria-labelledby="cta-title" className="bg-paper py-16 sm:py-20 lg:py-24">
       <div className="shell">
-        <div className="surface-dark reveal relative isolate overflow-hidden bg-forest px-6 py-14 text-white sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+        <div className="surface-dark reveal relative isolate overflow-hidden bg-navy px-6 py-14 text-white sm:px-12 sm:py-16 lg:px-16 lg:py-20">
           <span
             aria-hidden
             className="pointer-events-none absolute -right-4 -bottom-[0.32em] -z-10 font-serif text-[13rem] leading-none tracking-[-0.09em] text-white/[0.045] select-none sm:text-[20rem]"
@@ -23,7 +23,7 @@ export function ContactCTA() {
             <div>
               <Eyebrow light>Get in Touch</Eyebrow>
               <h2 id="cta-title" className="mt-5 font-serif text-[clamp(2.1rem,1.3rem+2.6vw,3.6rem)] leading-[1.05]">
-                Let’s Bring <em className="text-sage">Clarity</em> to Your Finances
+                Let’s Bring <em className="text-mist">Clarity</em> to Your Finances
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
                 Speak with an accountant about your personal or business accounting needs.

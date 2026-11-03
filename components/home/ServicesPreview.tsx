@@ -22,12 +22,12 @@ export function ServicesPreview() {
               style={{ '--i': i % 4 }}
               className="reveal group relative flex flex-col bg-white p-7 transition-colors duration-300 hover:bg-paper sm:p-8"
             >
-              <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-forest transition-transform duration-500 ease-(--ease-soft) group-hover:scale-x-100" />
+              <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-navy transition-transform duration-500 ease-(--ease-soft) group-hover:scale-x-100" />
               <div className="flex items-start justify-between">
-                <span className="grid size-12 place-items-center border border-line text-emerald transition-colors duration-300 group-hover:border-forest group-hover:bg-forest group-hover:text-white">
+                <span className="grid size-12 place-items-center border border-line text-blue transition-colors duration-300 group-hover:border-navy group-hover:bg-navy group-hover:text-white">
                   <Icon aria-hidden className="size-[1.375rem]" strokeWidth={1.4} />
                 </span>
-                <span aria-hidden className="font-serif text-lg text-forest/35">
+                <span aria-hidden className="font-serif text-lg text-navy/35">
                   {String(i + 1).padStart(2, '0')}
                 </span>
               </div>
@@ -37,13 +37,13 @@ export function ServicesPreview() {
                 </Link>
               </h3>
               <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-muted">{summary}</p>
-              <span aria-hidden className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-forest">
+              <span aria-hidden className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy">
                 Explore service
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </li>
           ))}
-          <li style={{ '--i': 3 }} className="surface-dark reveal flex flex-col justify-between gap-8 bg-forest p-7 text-white sm:p-8">
+          <li style={{ '--i': 3 }} className="surface-dark reveal flex flex-col justify-between gap-8 bg-navy p-7 text-white sm:p-8">
             <div>
               <p className="font-serif text-[1.75rem] leading-tight">Not sure where to start?</p>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-white/75">
